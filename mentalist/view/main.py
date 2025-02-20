@@ -148,7 +148,7 @@ class MainWindow(Tk.Frame):
         self.master.withdraw() # hide the main window until it is centered
         w = self.master.winfo_screenwidth()
         h = self.master.winfo_screenheight()
-        size = tuple(int(_) for _ in self.master.geometry().split('+')[0].split('x'))
+        size = [(int(_) for _ in self.master.geometry().split('+')[0].split('x')]
         x = w/2 - size[0]/2
         
         margins = (h-height) / 2
@@ -162,8 +162,9 @@ class MainWindow(Tk.Frame):
         if h < size[1]: # shrink the window vertically if it doesn't fit
             size[1] = h - 10
             y = 0
-        
-        self.master.geometry("%dx%d+%d+%d" % (size + (x, y)))
+        locate = size + [x, y]
+        w_new,h_new,x_new,y_new = locate
+        self.master.geometry("%dx%d+%d+%d" % (w_new,h_new,x_new,y_new))
         self.master.deiconify() # show the main window
         self.master.protocol("WM_DELETE_WINDOW", self.controller.exit)
         
