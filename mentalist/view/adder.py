@@ -46,7 +46,7 @@ class AdderNode(BaseWordsNode):
         for type_, range_str in NUMBER_LIST:
             range_ = list(map(int, range_str.split('-')))
             if type_ != 'years':
-                range_str = '-'.join(['0', locale.format('%d', range_[1], grouping=True)])
+                range_str = '-'.join(['0', locale.format_string('%d', range_[1], grouping=True)])
             range_[1] += 1
             m_numbers.add_command(label='{}: {}'.format(type_.capitalize(), range_str),
                                   command=partial(
