@@ -123,7 +123,7 @@ class MainWindow(Tk.Frame):
         self.process_mb = Tk.Menubutton(self.upper_status_bar, text='Process', relief='raised')
         self.process_mb.menu = Tk.Menu(self.process_mb, tearoff=0)
         self.process_mb["menu"] = self.process_mb.menu
-        self.process_mb.menu.add_command(label='Full Wordlist', command=partial(self.on_process, type_='full')]
+        self.process_mb.menu.add_command(label='Full Wordlist', command=partial(self.on_process, type_='full'))
         self.process_mb.menu.add_command(label='Base Words Only', command=partial(self.on_process, type_='basewords'))
         self.process_mb.menu.add_command(label='Hashcat/John Rules', command=partial(self.on_process, type_='hashcat'))
         self.process_mb.pack(fill='both', side='right', padx=10, pady=5)
@@ -148,7 +148,7 @@ class MainWindow(Tk.Frame):
         self.master.withdraw() # hide the main window until it is centered
         w = self.master.winfo_screenwidth()
         h = self.master.winfo_screenheight()
-        size = [(int(_) for _ in self.master.geometry().split('+')[0].split('x')]
+        size = [int(_) for _ in self.master.geometry().split('+')[0].split('x')]
         x = w/2 - size[0]/2
         
         margins = (h-height) / 2
